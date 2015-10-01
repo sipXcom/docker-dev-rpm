@@ -1,0 +1,4 @@
+[sipXcom]
+name=sipXcom software for CentOS $releasever - $basearch
+baseurl=http://download.sipxcom.org/pub/sipXecs/15.04/Fedora_19/$basearch
+gpgcheck=0
