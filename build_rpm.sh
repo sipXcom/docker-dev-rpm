@@ -12,5 +12,6 @@ if [ "$1" = 'init' ]; then
     sudo make repo-init
 else
   cd /home/sipx/sipxcom/build
-  sudo make $1.rpm
+  IFS=',' list=($1)
+  for item in "${list[@]}"; do sudo make $item.rpm; done
 fi
