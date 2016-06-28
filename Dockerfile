@@ -25,14 +25,13 @@ RUN yum -y install epel-release; yum clean all && yum -y install git \
   useradd -m sipx && usermod -G mock sipx && echo "sipx    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 
 VOLUME ["/home/sipx/sipxcom"]
-
-COPY ./build_rpm.sh /home/sipx/build_rpm.sh
-RUN chmod +x /home/sipx/build_rpm.sh
-
-RUN chown -R sipx:sipx /home/sipx
+RUN chown -R sipx:sipx /home/sipx/sipxcom
 
 USER sipx
 ENV HOME /home/sipx
 WORKDIR /home/sipx/sipxcom
 
-ENTRYPOINT ["/home/sipx/build_rpm.sh"]
+ADD ./build_rpm.sh /build_rpm.sh
+RUN chmod +x /build_rpm.sh
+
+ENTRYPOINT ["/build_rpm.sh"]
