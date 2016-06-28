@@ -25,7 +25,7 @@ RUN yum -y install epel-release; yum clean all && yum -y install git \
   useradd -m sipx && usermod -G mock sipx && echo "sipx    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 
 VOLUME ["/home/sipx/sipxcom"]
-chown -R sipx:sipx /home/sipx/sipxcom
+RUN chown -R sipx:sipx /home/sipx/sipxcom
 
 USER sipx
 ENV HOME /home/sipx
